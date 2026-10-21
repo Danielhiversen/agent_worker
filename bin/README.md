@@ -2,13 +2,13 @@
 
 For agents responding to `Install https://github.com/Danielhiversen/agent_worker`:
 complete both binary installation and agent setup below. The executable is named
-`agent-worker`, not `agent_worker` or `agent_file`.
+`agent-worker`.
 
 ## Download and install the matching binary
 
 Run this in Bash with Git, curl, and either `sha256sum` or `shasum` installed.
 It pins the binary repository's `main` to one commit so the binary and checksum
-come from the same build. It does not require a release in that repository.
+come from the same build.
 Linux binaries use glibc and are built on Ubuntu 24.04; older distributions may
 lack the required runtime. Windows and musl Linux builds are not published.
 
@@ -113,31 +113,19 @@ section instead of adding duplicates.
 > or rebuild graph indexes unless requested.
 
 If persistent instructions cannot be edited, report future-project setup as
-incomplete and identify the setting the user must update. Instructions must be
-loaded by the agent to affect its behavior; a binary alone cannot enforce usage.
+incomplete and identify the setting the user must update.
 
 ## Verify by using it
 
-In the working project, run a bounded query relevant to the user's task, such as:
+In the working project, choose an existing symbol or distinctive term relevant
+to the user's task and run a bounded query. Replace the placeholder below with
+that term:
 
 ```bash
-agent-worker inspect --query "installation" --budget-tokens 1500
+agent-worker inspect --query "<project symbol or term>" --budget-tokens 1500
 ```
 
 Check completion and truncation status; an empty or incomplete result is not proof
 that code is absent. Narrow the query or use `slice` on a known file as needed.
 Report the architecture, installation path, build identity from `capabilities`,
 instruction files updated, and verification result.
-
-## Build from source
-
-From a [fusion](https://github.com/Danielhiversen/fusion) source checkout:
-
-```bash
-cargo build --locked --release --no-default-features \
-  --manifest-path src-tauri/Cargo.toml --bin agent-worker
-sudo install -m 0755 src-tauri/target/release/agent-worker /usr/local/bin/agent-worker
-```
-
-Then complete the agent setup steps above. Published builds disable the optional
-Kilo runner; source builds can enable it with `--features kilo-runner`.

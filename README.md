@@ -1,7 +1,10 @@
 # agent-worker
 
-Prebuilt `agent-worker` binaries for macOS and Linux, automatically published
-from [fusion](https://github.com/Danielhiversen/fusion).
+`agent-worker` helps coding agents find relevant files and retrieve focused code
+snippets before loading large files into context.
+
+This repository contains prebuilt binaries for macOS and Linux, automatically
+published from [fusion](https://github.com/Danielhiversen/fusion).
 
 ## Install
 
@@ -14,10 +17,8 @@ Ask your coding agent:
 If you are the agent handling that request, follow the linked instructions to
 detect the platform, download and verify the matching binary, install it globally,
 enable persistent usage guidance, and verify it with a repository query.
-Copying the executable alone does not complete agent setup. Report any permission
-or configuration blocker rather than claiming setup succeeded.
 
-## Builds
+## Supported platforms
 
 | Platform | Directory |
 | --- | --- |
